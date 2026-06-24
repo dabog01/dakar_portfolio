@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#0f1115">
+    <title>Dakar Spa Automotriz | Auto Detailing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Header & Navegación -->
+    <header class="header sticky">
+        <div class="logo-container">
+            <img src="logo.png" alt="Dakar Spa Automotriz Logo" class="brand-logo">
+        </div>
+        <nav class="social-links">
+            <a href="https://instagram.com/dakar_spa_pasto" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/@dakarpasto" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://facebook.com/dakar.spaautomotriz.1" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>¡LUCE TU VEHÍCULO IMPECABLE!</h2>
+            <p>Somos una empresa dedicada al detalle y perfección en la limpieza automotriz. Selecciona los servicios que tu vehículo necesita a continuación.</p>
+        </div>
+    </section>
+
+    <!-- Constructor de Servicio -->
+    <main class="container">
+        <form id="service-builder" class="service-form">
+            <!-- Las categorías, paquetes y sub-opciones se inyectan vía JS -->
+        </form>
+    </main>
+
+    <!-- Panel de Resumen (Sticky Bottom) Mobile First -->
+    <div class="cart-panel sticky-bottom">
+        <div class="cart-info">
+            <div class="cart-time-wrapper">
+                <h4>Total Estimado:</h4>
+                <span id="total-time" class="highlight-text">0h 0min</span>
+            </div>
+            <small class="legal-text">* Sujeto a verificación en el local.</small>
+        </div>
+        <button id="btn-checkout" class="btn btn-whatsapp" disabled>
+            <i class="fab fa-whatsapp"></i> Agendar
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/ServiceForm.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
