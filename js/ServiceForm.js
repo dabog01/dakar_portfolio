@@ -3,51 +3,52 @@ class ServiceForm {
         this.form = document.getElementById(formId);
         this.timeDisplay = document.getElementById(timeDisplayId);
         this.btnCheckout = document.getElementById(btnId);
+        this.tabsContainer = document.getElementById('tabs-container');
         this.phone = "573017841673"; 
         
-        // Base de Datos Estructurada (Catálogo Completo)
+        // Base de Datos: Orientada a "Niveles de Limpieza" para mayor entendimiento
         this.catalogData = [
             {
-                category: "Línea Básico",
-                singleSelection: true, 
+                id: 'tab-basica',
+                category: "Limpieza Básica",
+                desc: "Mantenimiento regular ideal para conservar el buen aspecto de vehículos sin suciedad extrema.",
+                isMain: true, // REGLA: Solo se puede elegir 1 servicio principal en todo el cotizador
                 items: [
-                    { id: 'bas1', name: 'Básico Nivel I - Limpieza Express', desc: 'Lavado exterior con shampoo pH neutro, aspirado simple y glicerina en llantas.', timeMin: 60 },
-                    { id: 'bas2', name: 'Básico Nivel II - Limpieza Estándar', desc: 'Lavado exterior e interior. Incluye aspirado general y polichado manual con cera básica.', timeMin: 90 },
-                    { id: 'bas3', name: 'Básico Nivel III - Detalle Ligero', desc: 'Incluye aspirado profundo, polichado hidrofóbico y restaurador de plásticos.', timeMin: 120 }
+                    { id: 'bas1', name: 'Limpieza Express', desc: 'Lavado exterior con shampoo pH neutro, aspirado simple y glicerina en llantas.', timeMin: 60 },
+                    { id: 'bas2', name: 'Limpieza Estándar', desc: 'Lavado exterior e interior. Incluye aspirado general y polichado manual con cera básica.', timeMin: 90 },
+                    { id: 'bas3', name: 'Limpieza Detallada', desc: 'Aspirado profundo, polichado hidrofóbico y restaurador de plásticos.', timeMin: 120 }
                 ]
             },
             {
-                category: "Línea Dakar Pro",
-                singleSelection: true, 
+                id: 'tab-intermedia',
+                category: "Limpieza Intermedia",
+                desc: "Mayor atención al detalle y personalización. Tratamientos de brillo y desmanche.",
+                isMain: true,
                 items: [
-                    { id: 'pro1', name: 'Pro Nivel I - Lavado Personalizado', desc: 'Limpieza exterior e interior. Selecciona 1 opción de intervención.', timeMin: 150, maxChoices: 1, options: ['Motor a Vapor', 'Chasis + Grafito', 'Polichado Manual'] },
-                    { id: 'pro2', name: 'Pro Nivel II - Personalizado 2 en 1', desc: 'Lavado integral con 2 tratamientos especializados a elegir.', timeMin: 180, maxChoices: 2, options: ['Motor a Vapor', 'Chasis + Grafito', 'Polichado Manual'] },
-                    { id: 'pro3', name: 'Pro Nivel III - Personalizado Total', desc: 'Limpieza Estándar, Motor a Vapor, Chasis Grafitado y Polichado básico.', timeMin: 210 },
-                    { id: 'pro4', name: 'Pro Nivel IV - Especializado a Detalle', desc: 'Lavado Detallado, Motor, Chasis, Polichado hidrofóbico y Restaurador.', timeMin: 240 },
-                    { id: 'proPol1', name: 'Pro Polichado Nivel I - Brillo', desc: 'Máquina orbital y 1 capa de cera premium. Reaviva el color.', timeMin: 180 },
-                    { id: 'proPol2', name: 'Pro Polichado Nivel II - Brillo + Protección', desc: 'Máquina orbital con 2 capas de cera para brillo y protección.', timeMin: 120 },
-                    { id: 'proPol3', name: 'Pro Polichado Nivel III - Brillo, Prot. y Duración', desc: 'Tres capas de cera aplicado con máquinas orbital y rotorbital.', timeMin: 300 }
+                    { id: 'pro1', name: 'Limpieza de Componentes Críticos', desc: 'Lavado integral y puedes elegir servicios de limpieza exterior especificos (motor, chasis, polichado).', timeMin: 180, maxChoices: 3, options: ['Motor a Vapor', 'Chasis + Grafito', 'Polichado Manual'] },
+                    { id: 'proPol1', name: 'Polichado con 1 Cera', desc: 'Máquina orbital y 1 capa de cera premium. Reaviva el color original.', timeMin: 180 },
+                    { id: 'proPol2', name: 'Polichado con 2 Ceras', desc: 'Máquina orbital con 2 capas de cera especializada.', timeMin: 120 },
+                    { id: 'proPol3', name: 'Polichado con 3 Ceras', desc: 'Tres capas de cera aplicado con máquinas orbital y rotorbital.', timeMin: 300 }
                 ]
             },
             {
-                category: "Línea Elite & Profesional",
-                singleSelection: true, 
+                id: 'tab-profunda',
+                category: "Limpieza Profunda",
+                desc: "Para clientes exigentes. Restauración, porcelanizado y cuidado al milímetro por dentro y por fuera.",
+                isMain: true,
                 items: [
-                    { id: 'eli1', name: 'Elite Nivel I - Interior a tu Medida', desc: 'Detalla el tablero, puertas, consola, vidrios y 1 zona profunda a elección.', timeMin: 150, maxChoices: 1, options: ['Piso', 'Techo', 'Cojinería'] },
-                    { id: 'eli2', name: 'Elite Nivel II - Duo Interior', desc: 'Lavado detallado escogiendo 2 zonas de limpieza profunda del interior.', timeMin: 300, maxChoices: 2, options: ['Piso', 'Techo', 'Cojinería'] },
-                    { id: 'eli3', name: 'Prof. Nivel III - Interior Completo', desc: 'Perfecto para vehículos que necesitan un tratamiento completo por dentro.', timeMin: 360 },
-                    { id: 'eli4', name: 'Profundidad (Ext + Int)', desc: 'Protección exterior profunda y 1 zona interior premium a elección.', timeMin: 420, maxChoices: 1, options: ['Piso', 'Techo', 'Cojinería'] },
-                    { id: 'eli5', name: 'Elite Nivel V - Exterior + Duo Interior', desc: 'Estética exterior impecable y 2 opciones de limpieza interior profunda.', timeMin: 510, maxChoices: 2, options: ['Piso', 'Techo', 'Cojinería'] },
-                    { id: 'eli6', name: 'Elite Nivel VI - Exterior + Interior Completo', desc: '¡De adentro hacia afuera! Ideal para lucir en eventos o ventas.', timeMin: 210 },
-                    { id: 'eli7', name: 'Elite Nivel VII - Rest. a tu Medida', desc: 'Renueva componentes críticos. Elige entre desmanche de motor o chasis.', timeMin: 720, maxChoices: 1, options: ['Desmanche Motor', 'Desmanche Chasis'] },
-                    { id: 'eli8', name: 'Elite Nivel VIII - Duo Restauración', desc: 'Renovación total. Detalle interior, exterior, motor y chasis.', timeMin: 900 },
-                    { id: 'eli9', name: 'Elite Nivel IX - Porcelanizado', desc: 'Capa protectora sobre la pintura que protege del clima diario.', timeMin: 420 },
-                    { id: 'eli10', name: 'Elite Nivel X - Restauración Total', desc: '¡Para personas que lo quieren todo! Nada se queda atrás.', timeMin: 900 }
+                    { id: 'eli1', name: 'Limpieza Profunda de Exterior + Interior', desc: 'Estética exterior impecable y opciones de limpieza interior profunda.', timeMin: 510, maxChoices: 3, options: ['Piso', 'Techo', 'Cojinería'] },
+                    { id: 'eli2', name: 'Restauración de Componentes Críticos', desc: 'Luce tu vehículo como nuevo! Con opción de desmanche de motor y/o chasis.', timeMin: 720, maxChoices: 2, options: ['Desmanche Motor', 'Desmanche Chasis'] },
+                    { id: 'eli3', name: 'Duo Restauración', desc: 'Renovación total. Detalle interior, exterior, motor y chasis.', timeMin: 900 },
+                    { id: 'eli4', name: 'Porcelanizado', desc: 'Capa protectora sobre la pintura que protege del sol y la lluvia.', timeMin: 420 },
+                    { id: 'eli5', name: 'Restauración Total', desc: '¡Para personas que lo quieren todo! Nada se queda atrás.', timeMin: 900 }
                 ]
             },
             {
+                id: 'tab-extras',
                 category: "Servicios Individuales",
-                singleSelection: false, 
+                desc: "Puedes añadir múltiples de estos servicios a tu lavado principal según lo requieras.",
+                isMain: false, // REGLA: El usuario puede marcar todos los extras que desee
                 items: [
                     { id: 'ind1', name: 'Motor a Vapor', desc: 'Limpia el motor de forma segura con vapor a alta temperatura.', timeMin: 150 },
                     { id: 'ind2', name: 'Chasis + Grafito', desc: 'Recubrimiento protector que previene óxido y corrosión.', timeMin: 150 },
@@ -65,16 +66,27 @@ class ServiceForm {
     }
 
     init() {
+        this.renderTabs();
         this.renderForm();
         this.bindEvents();
         this.updateSummary();
     }
 
+    renderTabs() {
+        let buttonsHtml = '';
+        this.catalogData.forEach((group, index) => {
+            const isActive = index === 0 ? 'active' : '';
+            buttonsHtml += `<button type="button" class="tab-btn ${isActive}" data-target="${group.id}">${group.category}</button>`;
+        });
+        this.tabsContainer.innerHTML = buttonsHtml;
+    }
+
     renderForm() {
         let html = '';
-        this.catalogData.forEach(group => {
-            html += `<div class="category-group" data-single="${group.singleSelection}">
-                        <h3 class="category-title">${group.category}</h3>
+        this.catalogData.forEach((group, index) => {
+            const isActive = index === 0 ? 'active' : '';
+            html += `<div class="tab-content ${isActive}" id="${group.id}">
+                        <p class="tab-description">${group.desc}</p>
                         <div class="options-grid">`;
             
             group.items.forEach(item => {
@@ -85,7 +97,7 @@ class ServiceForm {
                     optionsHtml = `
                         <div class="sub-options-container" id="sub-${item.id}">
                             <div class="sub-options-title">
-                                <i class="fas fa-hand-pointer"></i> ¡Tu eliges! Selecciona ${item.maxChoices}:
+                                <i class="fas fa-hand-pointer"></i> Personaliza (Elige ${item.maxChoices}):
                             </div>
                             <div class="sub-options-grid">
                                 ${item.options.map((opt) => `
@@ -105,7 +117,7 @@ class ServiceForm {
                             <div class="package-title-area">
                                 <input type="checkbox" class="main-checkbox" id="${item.id}" value="${item.id}" 
                                        data-name="${item.name}" data-time="${item.timeMin}" 
-                                       data-max="${item.maxChoices || 0}" data-category="${group.category}">
+                                       data-max="${item.maxChoices || 0}" data-ismain="${group.isMain}">
                                 <span class="custom-checkbox"></span>
                                 <span class="package-name">${item.name}</span>
                             </div>
@@ -122,6 +134,20 @@ class ServiceForm {
     }
 
     bindEvents() {
+        // Lógica de navegación de pestañas
+        this.tabsContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('tab-btn')) {
+                // Quitar activo a todos
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                // Activar el seleccionado
+                e.target.classList.add('active');
+                document.getElementById(e.target.dataset.target).classList.add('active');
+            }
+        });
+
+        // Lógica de checkboxes
         this.form.addEventListener('change', (e) => {
             if (e.target.classList.contains('main-checkbox')) {
                 this.handleMainCheckbox(e.target);
@@ -129,20 +155,20 @@ class ServiceForm {
                 this.handleSubCheckbox(e.target);
             }
         });
+        
         this.btnCheckout.addEventListener('click', () => this.sendWhatsApp());
     }
 
     handleMainCheckbox(checkbox) {
         const id = checkbox.value;
-        const categoryName = checkbox.dataset.category;
-        const categoryGroup = this.catalogData.find(c => c.category === categoryName);
-        const isSingleSelection = categoryGroup ? categoryGroup.singleSelection : false;
+        const isMain = checkbox.dataset.ismain === 'true'; // string to boolean
 
         if (checkbox.checked) {
-            // Lógica Exclusividad: Desmarca los anteriores de la misma familia
-            if (isSingleSelection) {
+            // REGLA MAESTRA: Si el servicio marcado es un "Servicio Principal" (Básico, Intermedio o Profundo),
+            // debemos desmarcar cualquier otro servicio principal en el carrito para evitar conflictos.
+            if (isMain) {
                 for (let [existingId, existingItem] of this.cart.entries()) {
-                    if (existingItem.category === categoryName && existingId !== id) {
+                    if (existingItem.isMain && existingId !== id) {
                         this.removeServiceUI(existingId);
                         this.cart.delete(existingId);
                     }
@@ -157,7 +183,7 @@ class ServiceForm {
                 name: checkbox.dataset.name,
                 timeMin: parseInt(checkbox.dataset.time),
                 maxChoices: parseInt(checkbox.dataset.max),
-                category: categoryName,
+                isMain: isMain,
                 selectedOptions: []
             });
             
@@ -185,7 +211,6 @@ class ServiceForm {
                 item.selectedOptions.push(subCheckbox.value);
             } else {
                 subCheckbox.checked = false;
-                // Pequeño feedback táctil si excede el límite
                 if (navigator.vibrate) navigator.vibrate(50); 
             }
         } else {
@@ -205,7 +230,7 @@ class ServiceForm {
         if (subContainer) {
             subContainer.classList.remove('visible');
             subContainer.querySelectorAll('.sub-checkbox').forEach(sub => sub.checked = false);
-            this.updateSubCheckboxesUI(id); // Resetea las clases de disabled
+            this.updateSubCheckboxesUI(id);
         }
     }
 
@@ -243,19 +268,31 @@ class ServiceForm {
     }
 
     sendWhatsApp() {
-        let msg = `Hola *Dakar Spa Automotriz*. Quiero agendar una cotización para mi vehículo con los siguientes servicios:\n\n`;
+        let msg = `Hola *Dakar Spa Automotriz*. Quiero agendar la siguiente limpieza para mi vehículo:\n\n`;
         
+        // Separamos en el mensaje qué es principal y qué son extras
+        const mainServices = [];
+        const extraServices = [];
+
         this.cart.forEach((service) => {
-            msg += `✅ *${service.name}*\n`;
+            let srt = `✅ *${service.name}*\n`;
             if (service.selectedOptions.length > 0) {
-                msg += `   ↳ _Elecciones:_ ${service.selectedOptions.join(', ')}\n`;
+                srt += `   ↳ _Filtros:_ ${service.selectedOptions.join(', ')}\n`;
             } else if (service.maxChoices > 0) {
-                msg += `   ↳ _(Opciones pendientes por definir en el local)_\n`;
+                srt += `   ↳ _(Opciones a definir en el local)_\n`;
             }
+            service.isMain ? mainServices.push(srt) : extraServices.push(srt);
         });
 
-        msg += `\n⏱ *Tiempo estimado:* ${this.timeDisplay.textContent}\n`;
-        msg += `\n¡Quedo atento a disponibilidad!`;
+        if (mainServices.length > 0) {
+            msg += `🚘 *Nivel de Limpieza Principal:*\n${mainServices.join('')}\n`;
+        }
+        if (extraServices.length > 0) {
+            msg += `➕ *Servicios Extras (Adicionales):*\n${extraServices.join('')}\n`;
+        }
+
+        msg += `⏱ *Tiempo estimado:* ${this.timeDisplay.textContent}\n`;
+        msg += `\n¡Quedo atento para coordinar la cita!`;
 
         const url = `https://wa.me/${this.phone}?text=${encodeURIComponent(msg)}`;
         window.open(url, '_blank');
