@@ -14,9 +14,9 @@ class ServiceForm {
                 desc: "Mantenimiento ideal para el día a día. Recomendado para carros sin suciedad extrema.",
                 isMain: true,
                 items: [
-                    { id: 'bas1', name: 'Limpieza Express', desc: 'Lavado exterior cuidadoso, aspirado básico por dentro y brillo en las llantas.', timeMin: 60 },
-                    { id: 'bas2', name: 'Limpieza Estándar', desc: 'Lavado detallado por dentro y por fuera, más una capa de cera aplicada a mano para dar brillo.', timeMin: 90 },
-                    { id: 'bas3', name: 'Limpieza Detallada', desc: 'Aspirado a profundidad, cera que repele el agua y protección para revivir los plásticos negros.', timeMin: 120 }
+                    { id: 'bas1', name: 'Limpieza Dakar Express', desc: 'Lavado exterior cuidadoso, aspirado básico por dentro y brillo en las llantas.', timeMin: 60 },
+                    { id: 'bas2', name: 'Limpieza Dakar Estándar', desc: 'Lavado detallado por dentro y por fuera, más una capa de cera aplicada a mano para dar brillo.', timeMin: 90 },
+                    { id: 'bas3', name: 'Limpieza Dakar Detallada', desc: 'Aspirado a profundidad, cera que repele el agua y protección para revivir los plásticos negros.', timeMin: 120 }
                 ]
             },
             {
@@ -26,7 +26,7 @@ class ServiceForm {
                 isMain: true,
                 items: [
                     {
-                        id: 'pro1', name: 'Limpieza Exterior Completa',
+                        id: 'pro1', name: 'Limpieza Dakar Pro',
                         desc: 'Lavado general de tu carro, y tú eliges qué partes mecánicas o de pintura quieres dejar como nuevas.',
                         timeMin: 90, // Tiempo base del lavado
                         maxChoices: 3,
@@ -36,9 +36,9 @@ class ServiceForm {
                             { name: 'Polichado Manual', timeAdd: 60 }
                         ]
                     },
-                    { id: 'proPol1', name: 'Polichado con 1 Cera', desc: 'Usamos una máquina especial y una capa de cera para devolverle el color y brillo original a la pintura.', timeMin: 180 },
-                    { id: 'proPol2', name: 'Polichado con 2 Ceras', desc: 'Proceso a máquina aplicando dos tipos de cera para lograr un brillo más profundo y protección contra el clima.', timeMin: 120 },
-                    { id: 'proPol3', name: 'Polichado con 3 Ceras', desc: 'Nuestro mejor tratamiento para la pintura. Tres capas de cera para un brillo tipo espejo de larga duración.', timeMin: 300 }
+                    { id: 'proPol1', name: 'Polichado Dakar', desc: 'Usamos una máquina especial y una capa de cera para devolverle el color y brillo original a la pintura.', timeMin: 180 },
+                    { id: 'proPol2', name: 'Polichado Duo Dakar', desc: 'Proceso a máquina aplicando dos tipos de cera para lograr un brillo más profundo y protección contra el clima.', timeMin: 120 },
+                    { id: 'proPol3', name: 'Polichado Triada Dakar', desc: 'Nuestro mejor tratamiento para la pintura. Tres capas de cera para un brillo tipo espejo de larga duración.', timeMin: 300 }
                 ]
             },
             {
@@ -48,7 +48,7 @@ class ServiceForm {
                 isMain: true,
                 items: [
                     {
-                        id: 'eli1', name: 'Limpieza Profunda de Exterior + Interior',
+                        id: 'eli1', name: 'Limpieza Dakar Elite',
                         desc: 'Pintura impecable por fuera y tú eliges qué partes del interior quieres desmanchar y lavar a fondo.',
                         timeMin: 150, // Tiempo base
                         maxChoices: 3,
@@ -59,18 +59,16 @@ class ServiceForm {
                         ]
                     },
                     {
-                        id: 'eli2', name: 'Restauración de Componentes Críticos',
+                        id: 'eli2', name: 'Restauración Dakar Elite',
                         desc: '¡Luce tu vehículo como nuevo! Lavado profundo y eliges si quieres desmanchar piezas difíciles.',
                         timeMin: 360, // Tiempo base
                         maxChoices: 2,
                         options: [
-                            { name: 'Desmanche Motor', timeAdd: 180 },
-                            { name: 'Desmanche Chasis', timeAdd: 180 }
+                            { name: 'Desmanche de Motor', timeAdd: 180 },
+                            { name: 'Desmanche de Chasis', timeAdd: 180 }
                         ]
                     },
-                    { id: 'eli3', name: 'Duo Restauración', desc: 'Renovación total. Limpiamos a fondo el interior, el exterior, dejamos el motor impecable y el chasis como nuevo.', timeMin: 900 },
-                    { id: 'eli4', name: 'Porcelanizado', desc: 'Aplicamos un escudo protector invisible sobre la pintura que hace que brille muchísimo y repele el agua y el polvo.', timeMin: 420 },
-                    { id: 'eli5', name: 'Restauración Total', desc: '¡Para personas que lo quieren todo! Limpiamos y restauramos absolutamente cada rincón de tu carro.', timeMin: 900 }
+                    { id: 'eli3', name: 'Porcelanizado', desc: 'Aplicamos un escudo protector invisible sobre la pintura que hace que brille muchísimo y repele el agua y el polvo.', timeMin: 420 },
                 ]
             },
             {
@@ -326,7 +324,7 @@ class ServiceForm {
     }
 
     sendWhatsApp() {
-        let msg = `Hola *Dakar Spa Automotriz*. Quiero agendar la siguiente limpieza para mi vehículo:\n\n`;
+        let msg = `Hola *Dakar Spa Automotriz*. Quiero más información a cerca de este servicio para mi vehículo:\n\n`;
 
         const mainServices = [];
         const extraServices = [];
